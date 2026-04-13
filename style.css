@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  background: #000;
+}
+
+#bouncyBall {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: block;
+}
+
+/* 🌌 дышащий круг — над canvas */
+.breathing-circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 80vmax;
+  height: 80vmax;
+
+  transform: translate(-50%, -50%) scale(0.4);
+  border-radius: 50%;
+
+  background: radial-gradient(circle,
+    rgba(0, 16, 97, 1) 0%,
+    rgba(6, 16, 69, 1) 36%,
+    rgba(0, 0, 0, 1) 100%);
+
+  filter: blur(260px);
+    animation: breathe 27s ease infinite;
+    transition: opacity 0.5s ease;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes breathe {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0.6;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 🧠 текст — поверх всего */
+.synopsis {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #eaf2ff;
+  z-index: 2;
+}
+
+.synopsis__header {
+  font-size: 4em;
+  font-weight: 300;
+  margin: 0;
+  text-shadow: 0 0 25px rgba(120,160,255,0.25);
+}
+
+.synopsis__description {
+  opacity: 0.6;
+}
+
+/* 🔗 иконки */
+.social__list {
+  margin-top: 50px;
+  padding: 0;
+}
+
+.social__list li {
+  display: inline-block;
+  padding-right: 40px;
+}
+
+.social__list li a {
+  color: #a9c7ff;
+  transition: 0.3s;
+}
+
+.social__list li a:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.social__list li svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
